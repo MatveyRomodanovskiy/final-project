@@ -95,7 +95,7 @@
 
 	<modules>
 		<module>analyzer</module>
-		<module>analiser</module>
+
 		<module>avg-populator</module>
 		<module>sensor-range-provider</module>
 		<module>sensor-emails-provider</module>

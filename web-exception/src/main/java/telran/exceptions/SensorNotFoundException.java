@@ -1,5 +1,6 @@
 package telran.exceptions;
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -10,6 +11,6 @@ import telran.probes.messages.ErrorMessages;
 public class SensorNotFoundException extends NotFoundException{
 
 	public SensorNotFoundException() {
-		super(ErrorMessages.SENSOR_NOT_EXISTS);
+		super(ErrorMessages.MISSING_EMAILS);
 	}
 }

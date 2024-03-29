@@ -13,7 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import telran.exceptions.NotFoundException;
+
 import telran.exceptions.SensorNotFoundException;
 import telran.probes.service.SensorRangeProviderService;
 import static telran.probes.messages.ErrorMessages.*;

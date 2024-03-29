@@ -8,15 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import telran.exceptions.SensorNotFoundException;
-import telran.probes.repo.SensorRangesRepo;
-import telran.probes.service.SensorRangeProviderService;
+import telran.probes.repo.SensorEmailsRepo;
+import telran.probes.service.SensorEmailsProviderService;
+
 
 @SpringBootTest
-class SensorRangeProviderServiceTests {
+class SensorEmailsProviderServiceTests {
 	@Autowired
-	SensorRangeProviderService sensorRangeProviderService;
+	SensorEmailsProviderService sensorEmailsProviderService;
 	@Autowired
-	SensorRangesRepo sensorRangeProviderRepo;
+	SensorEmailsRepo sensorRangeProviderRepo;
 	@Autowired
 	TestDb testDb;
 	
@@ -27,12 +28,12 @@ class SensorRangeProviderServiceTests {
 	
 	@Test
 	void getSensorRange_correctFlow_success() {
-		assertEquals(TestDb.RANGE, sensorRangeProviderService.getSensorRange(TestDb.ID));
+		assertArrayEquals(TestDb.SENSOR_EMAILS, sensorEmailsProviderService.getSensorEmails(TestDb.ID));
 	}
 	
 	@Test
 	void getSensorRange_idNotExists_throwsException() {
-		assertThrowsExactly(SensorNotFoundException.class, () -> sensorRangeProviderService.getSensorRange(TestDb.ID_NOT_EXISTS));
+		assertThrowsExactly(SensorNotFoundException.class, () -> sensorEmailsProviderService.getSensorEmails(TestDb.ID_NOT_EXISTS));
 	}
 
 }

@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import telran.exceptions.NotFoundException;
 import telran.exceptions.SensorNotFoundException;
 import telran.probes.dto.Range;
 import telran.probes.model.SensorRangeDoc;
