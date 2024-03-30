@@ -22,7 +22,7 @@ import telran.probes.service.RangeProviderClientService;
 @SpringBootTest
 @Import(TestChannelBinderConfiguration.class)
 class AnalyzerControllerTest {
-	private static final long SENSOR_ID = 123;
+	private static final long SENSOR_ID = 12;
 	private static final  double MIN_VALUE = 100;
 	private static final  double MAX_VALUE = 200;
 	private static final double VALUE_LESS_MIN = 50;

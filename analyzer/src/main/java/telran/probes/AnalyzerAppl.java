@@ -37,11 +37,7 @@ public class AnalyzerAppl {
 			sendDeviation(id, value, range.minValue());
 		}
 
-		
-		
-		// in the case probeData value doesn't fall into a range received from RangeProviderClientService
-		// create a proper deviation and  streamBridge.send(producerBindingName, deviation);
-		
+
 	}
 	private void sendDeviation(long id, double value, double limit) {
 		DeviationData deviation = new DeviationData(id, value - limit, value, System.currentTimeMillis());
