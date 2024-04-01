@@ -35,7 +35,7 @@ public class AvgReducerAppl {
 			streamBridge.send(producerBindingName, avgProbeData);
 			log.debug("AvgReducer send new avgData:{} for sensor {}", resDouble, probeData.id());
 		} else {
-			log.debug("AvgReducer didn't send any for sensor",probeData.id());
+			log.trace("no avg value for service {}", probeData.id());
 		}
 		
 	}

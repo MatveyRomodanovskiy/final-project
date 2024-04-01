@@ -10,11 +10,11 @@ import lombok.Getter;
 @Configuration
 @Getter
 public class ServiceConfiguration {
-@Value("${app.range.provider.host:localhost}")
+@Value("${app.emails.provider.host:localhost}")
 	String host;
-@Value("${app.range.provider.port:8282}")
+@Value("${app.emails.provider.port:8585}")
 int port;
-@Value("${app.range.provider.path:/range/sensor/}")
+@Value("${app.emails.provider.path:/emails/sensor/}")
 String path;
 @Bean
 RestTemplate getRestTemplate() {

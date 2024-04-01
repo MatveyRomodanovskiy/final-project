@@ -1,7 +1,7 @@
 package telran.probes.service;
 
 public interface EmailsProviderClientService {
-	String[] DEFAULT_EMAILS = {"email1", "email2"};
-	
+	String SERVICE_EMAIL = "service-sensors@gmail.com";
+
 	String[] getMails(long sensorId);
 }

@@ -32,6 +32,7 @@ class AvgReducerControllerTest {
 
 
 	private static final ProbeData NO_AVG_DATA = new ProbeData(SENSOR_ID_NO_AVG, AVG_VALUE, System.currentTimeMillis());
+	private static final long WAIT_TIME = 100;
 
 	
 	
@@ -43,6 +44,7 @@ AvgReducerService avgReducerService;
 	OutputDestination consumer;
 	
 	ObjectMapper mapper = new ObjectMapper();
+	
 	private String producerBindingName = "avgReducerProducer-out-0";
 	private String consumerBindingName = "avgReducerConsumer-in-0";
 	
@@ -61,14 +63,14 @@ AvgReducerService avgReducerService;
 	@Test
 	void noAvgTest() {
 		producer.send(new GenericMessage<ProbeData>(NO_AVG_DATA), consumerBindingName);
-		Message<byte[]> message = consumer.receive(10, producerBindingName);
+		Message<byte[]> message = consumer.receive(WAIT_TIME, producerBindingName);
 		assertNull(message);
 	}
 	
 	@Test
 	void withAvgTest() throws Exception {
 		producer.send(new GenericMessage<ProbeData>(PROBE_DATA), consumerBindingName);
-		Message<byte[]> message = consumer.receive(10, producerBindingName);
+		Message<byte[]> message = consumer.receive(WAIT_TIME, producerBindingName);
 		ProbeData resData = mapper.readValue(message.getPayload(), ProbeData.class);
 		assertNotNull(message);
 		assertEquals(resData.value(), AVG_VALUE);
