@@ -19,21 +19,21 @@ public class AdminConsoleController {
 		log.debug("adding received sensor range: {}", sensorRange);
 		return adminConsoleService.addSensorRange(sensorRange);
 	}
-	@PostMapping("emails")
-	SensorEmails addSensorEmails(@RequestBody @Valid SensorEmails sensorEmails) {
-		log.debug("adding received sensor emails: {}", sensorEmails);
-		return adminConsoleService.addSensorEmails(sensorEmails);
-		
-	}
-	@PutMapping("range")
-	SensorRange updateSensorRange(@RequestBody @Valid SensorRange sensorRange) {
-		log.debug("updating received sensor range: {}", sensorRange);
-		return adminConsoleService.updateSensorRange(sensorRange);
-	}
-	@PutMapping("emails")
-	SensorEmails updateSensorEmails(@RequestBody @Valid SensorEmails sensorEmails) {
-		log.debug("updating received sensor emails: {}", sensorEmails);
-		return adminConsoleService.updateSensorEmails(sensorEmails);
-		
-	}
+//	@PostMapping("emails")
+//	SensorEmails addSensorEmails(@RequestBody @Valid SensorEmails sensorEmails) {
+//		log.debug("adding received sensor emails: {}", sensorEmails);
+//		return adminConsoleService.addSensorEmails(sensorEmails);
+//		
+//	}
+//	@PutMapping("range")
+//	SensorRange updateSensorRange(@RequestBody @Valid SensorRange sensorRange) {
+//		log.debug("updating received sensor range: {}", sensorRange);
+//		return adminConsoleService.updateSensorRange(sensorRange);
+//	}
+//	@PutMapping("emails")
+//	SensorEmails updateSensorEmails(@RequestBody @Valid SensorEmails sensorEmails) {
+//		log.debug("updating received sensor emails: {}", sensorEmails);
+//		return adminConsoleService.updateSensorEmails(sensorEmails);
+//		
+//	}
 }

@@ -43,57 +43,57 @@ FindAndModifyOptions options = new FindAndModifyOptions().returnNew(true).upsert
 		return sensorRange;
 	}
 
-	@Override
-	public SensorEmails addSensorEmails(SensorEmails sensorEmails) {
-		long sensorId = sensorEmails.id();
-		String[] emails = sensorEmails.emails();
-		
-		try {
-			mongoTemplate.insert(new SensorEmailsDoc(sensorId, emails));
-		} catch (DuplicateKeyException e) {
-			log.error("sensor with id: {} already exists in collection {}", sensorId, collectionNameMails);
-			throw new SensorIllegalStateException(sensorId, collectionNameMails);
-		}
-		log.debug("sensor: {} has been added", sensorEmails);
-		return sensorEmails;
-	}
-
-	@Override
-	public SensorRange updateSensorRange(SensorRange sensorRange) {
-		long sensorId = sensorRange.id();
-		Range range = sensorRange.range();
-		Update update = new Update();
-		update.push("range", range);
-		Query query = new Query(Criteria.where("sensorId").is(sensorId));
-		SensorRangeDoc sensorRangeRes = mongoTemplate.findAndModify(query, update, options, SensorRangeDoc.class);
-		if(sensorRangeRes == null) {
-			log.error("sensor {} doresn't exists in the collection {}", sensorId, collectionNameRanges);
-			throw new SensorNotFoundException(sensorId, collectionNameRanges);
-		}
-		log.debug("new range for sensor {} is {}", sensorId, range);
-		SensorUpdateData updateData = new SensorUpdateData(sensorId, range, null);
-		streamBridge.send(bindingName, updateData);
-		log.debug("update data {} have been sent to binding name {}", updateData, bindingName);
-		return sensorRange;
-	}
-
-	@Override
-	public SensorEmails updateSensorEmails(SensorEmails sensorEmails) {
-		long sensorId = sensorEmails.id();
-		String[] emails = sensorEmails.emails();
-		Update update = new Update();
-		update.push("emails", emails);
-		Query query = new Query(Criteria.where("sensorId").is(sensorId));
-		SensorEmailsDoc sensorEmailsRes = mongoTemplate.findAndModify(query, update, options, SensorEmailsDoc.class);
-		if(sensorEmailsRes == null) {
-			log.error("sensor {} doresn't exists in the collection {}", sensorId, collectionNameMails);
-			throw new SensorNotFoundException(sensorId, collectionNameMails);
-		}
-		log.debug("new remails for sensor {} is {}", sensorId, emails);
-		SensorUpdateData updateData = new SensorUpdateData(sensorId, null, emails);
-		streamBridge.send(bindingName, updateData);
-		log.debug("update data {} have been sent to binding name {}", updateData, bindingName);
-		return sensorEmails;
-	}
+//	@Override
+//	public SensorEmails addSensorEmails(SensorEmails sensorEmails) {
+//		long sensorId = sensorEmails.id();
+//		String[] emails = sensorEmails.mails();
+//		
+//		try {
+//			mongoTemplate.insert(new SensorEmailsDoc(sensorId, emails));
+//		} catch (DuplicateKeyException e) {
+//			log.error("sensor with id: {} already exists in collection {}", sensorId, collectionNameMails);
+//			throw new SensorIllegalStateException(sensorId, collectionNameMails);
+//		}
+//		log.debug("sensor: {} has been added", sensorEmails);
+//		return sensorEmails;
+//	}
+//
+//	@Override
+//	public SensorRange updateSensorRange(SensorRange sensorRange) {
+//		long sensorId = sensorRange.id();
+//		Range range = sensorRange.range();
+//		Update update = new Update();
+//		update.push("range", range);
+//		Query query = new Query(Criteria.where("sensorId").is(sensorId));
+//		SensorRangeDoc sensorRangeRes = mongoTemplate.findAndModify(query, update, options, SensorRangeDoc.class);
+//		if(sensorRangeRes == null) {
+//			log.error("sensor {} doresn't exists in the collection {}", sensorId, collectionNameRanges);
+//			throw new SensorNotFoundException(sensorId, collectionNameRanges);
+//		}
+//		log.debug("new range for sensor {} is {}", sensorId, range);
+//		SensorUpdateData updateData = new SensorUpdateData(sensorId, range, null);
+//		streamBridge.send(bindingName, updateData);
+//		log.debug("update data {} have been sent to binding name {}", updateData, bindingName);
+//		return sensorRange;
+//	}
+//
+//	@Override
+//	public SensorEmails updateSensorEmails(SensorEmails sensorEmails) {
+//		long sensorId = sensorEmails.id();
+//		String[] emails = sensorEmails.mails();
+//		Update update = new Update();
+//		update.push("emails", emails);
+//		Query query = new Query(Criteria.where("sensorId").is(sensorId));
+//		SensorEmailsDoc sensorEmailsRes = mongoTemplate.findAndModify(query, update, options, SensorEmailsDoc.class);
+//		if(sensorEmailsRes == null) {
+//			log.error("sensor {} doresn't exists in the collection {}", sensorId, collectionNameMails);
+//			throw new SensorNotFoundException(sensorId, collectionNameMails);
+//		}
+//		log.debug("new remails for sensor {} is {}", sensorId, emails);
+//		SensorUpdateData updateData = new SensorUpdateData(sensorId, null, emails);
+//		streamBridge.send(bindingName, updateData);
+//		log.debug("update data {} have been sent to binding name {}", updateData, bindingName);
+//		return sensorEmails;
+//	}
 
 }
