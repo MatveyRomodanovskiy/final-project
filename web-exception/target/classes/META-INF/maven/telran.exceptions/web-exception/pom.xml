@@ -5,9 +5,8 @@
     <artifactId>probes-monitoring</artifactId>
     <version>0.0.1</version>
   </parent>
-  <groupId>web-exception-handling</groupId>
+  <groupId>telran.exceptions</groupId>
   <artifactId>web-exception</artifactId>
-  <version>0.0.1</version>
   <description>Handling for web exception</description>
   
   <dependencies>
