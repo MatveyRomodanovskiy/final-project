@@ -10,7 +10,7 @@ import static telran.probes.UrlConstants.*;
 @Slf4j
 public class SensorEmailsProviderController {
 	final SensorEmailsProviderService service;
-	@GetMapping(EMAILS_PATH + "{id}")
+	@GetMapping("${app.emails.provider.url}" + "{id}")
 	String[] getSensorEmails(@PathVariable(name="id") long id) {
 		String[] sensorEmails =  service.getSensorEmails(id);
 		log.debug("sensor list Emails size received is {}", sensorEmails.length);
