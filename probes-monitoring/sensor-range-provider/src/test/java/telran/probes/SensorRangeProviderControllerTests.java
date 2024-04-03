@@ -14,7 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import telran.exceptions.SensorNotFoundException;
+import telran.exceptions.NotFoundException;
+import telran.probes.exceptions.SensorNotFoundException;
 import telran.probes.service.SensorRangeProviderService;
 import static telran.probes.messages.ErrorMessages.*;
 
@@ -26,7 +27,7 @@ class SensorRangeProviderControllerTests {
 	SensorRangeProviderService sensorRangeProviderService;
 	@Autowired
 	ObjectMapper mapper;
-	
+	String collectionNameRanges = "sensor_ranges";
 
 	@Test
 	void getSensorRange_correctFlow_success() throws Exception {
@@ -38,9 +39,9 @@ class SensorRangeProviderControllerTests {
 	
 	@Test
 	void getSensorRange_idNotExists_throwsException() throws Exception {
-		when(sensorRangeProviderService.getSensorRange(TestDb.ID_NOT_EXISTS)).thenThrow(new SensorNotFoundException());
-		String response = mockMvc.perform(get(TestDb.URL_PATH + SENSOR_RANGE_PATH + TestDb.ID_NOT_EXISTS)).andExpect(status().isNotFound()).andReturn().getResponse().getErrorMessage();
-		assertEquals(SENSOR_NOT_EXISTS, response);
+		when(sensorRangeProviderService.getSensorRange(TestDb.ID_NOT_EXISTS)).thenThrow(new SensorNotFoundException(TestDb.ID_NOT_EXISTS, collectionNameRanges));
+		String response = mockMvc.perform(get(TestDb.URL_PATH + SENSOR_RANGE_PATH + TestDb.ID_NOT_EXISTS)).andExpect(status().isNotFound()).andReturn().getResolvedException().getMessage();
+		assertEquals("sensor "+TestDb.ID_NOT_EXISTS+" not found in collection " + collectionNameRanges, response);
 	}
 	
 
