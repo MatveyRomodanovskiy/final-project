@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-@Document(collection="sensor-emails")
+@Document(collection="sensor_emails")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor

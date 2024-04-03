@@ -24,8 +24,8 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>web-exception-handling</groupId>
-  			<artifactId>web-exception</artifactId>
+			 <groupId>telran.exceptions</groupId>
+  		<artifactId>web-exception</artifactId>
   			<version>0.0.1</version>
 		</dependency>
 	</dependencies>
