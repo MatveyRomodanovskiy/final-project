@@ -16,7 +16,7 @@ final SensorRangesRepo sensorRangesRepo;
 	@Override
 	public Range getSensorRange(long sensorId) {
 		SensorRangeDoc sensorRangeDoc = sensorRangesRepo.findById(sensorId)
-				.orElseThrow(()->new SensorNotFoundException());
+				.orElseThrow(()->new SensorNotFoundException(sensorId));
 			log.debug("Sensor range for sensor with id {}recieved ", sensorId);
 		return sensorRangeDoc.getRange();
 	}

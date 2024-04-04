@@ -43,9 +43,9 @@ class SensorEmailsProviderControllerTests {
 	
 	@Test
 	void getEmails_idNotExists_throwsException() throws Exception {
-		when(sensorEmailsProviderService.getSensorEmails(TestDb.ID_NOT_EXISTS)).thenThrow(new SensorNotFoundException());
+		when(sensorEmailsProviderService.getSensorEmails(TestDb.ID_NOT_EXISTS)).thenThrow(new SensorNotFoundException(TestDb.ID_NOT_EXISTS));
 		String response = mockMvc.perform(get(TestDb.URL_PATH + EMAILS_PATH + TestDb.ID_NOT_EXISTS)).andExpect(status().isNotFound()).andReturn().getResponse().getErrorMessage();
-		assertEquals(SENSOR_NOT_EXISTS, response);
+		assertEquals(String.format("sensor %d not found", TestDb.ID_NOT_EXISTS), response);
 	}
 	
 

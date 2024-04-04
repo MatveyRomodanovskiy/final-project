@@ -15,7 +15,7 @@ final SensorEmailsRepo sensorEmailsRepo;
 	@Override
 	public String[] getSensorEmails(long sensorId) {
 		SensorEmailsDoc sensorEmailsDoc = sensorEmailsRepo.findById(sensorId)
-				.orElseThrow(()->new SensorNotFoundException());
+				.orElseThrow(()->new SensorNotFoundException(sensorId));
 			log.debug("Sensor range for sensor with id {}recieved ", sensorId);
 		return sensorEmailsDoc.getEmails();
 	}
