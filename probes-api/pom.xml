@@ -3,6 +3,10 @@
   <groupId>probes-api</groupId>
   <artifactId>probes-api</artifactId>
   <version>0.0.1</version>
+  <properties>
+	<maven.compiler.source>17</maven.compiler.source>
+	<maven.compiler.target>17</maven.compiler.target>
+  </properties>
   <dependencies>
 	  <dependency>
     <groupId>jakarta.validation</groupId>

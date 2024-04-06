@@ -6,6 +6,7 @@
 		<version>3.2.4</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+	
   <groupId>telran.exceptions</groupId>
   <artifactId>web-exception</artifactId>
   <description>Handling for web exception</description>
