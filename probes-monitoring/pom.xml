@@ -106,5 +106,7 @@
 		<module>probes</module>
 		<module>admin-console</module>
 		<module>config-server</module>
+		<module>AccountProvider</module>
+		<module>gateway</module>
 	</modules>
 </project>
