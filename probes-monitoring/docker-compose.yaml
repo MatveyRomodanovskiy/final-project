@@ -110,3 +110,32 @@ services:
         environment:
             - MAIL_PASSWORD=${MAIL_PASSWORD}
             - STREAM_API_SECRET=${STREAM_API_SECRET}
+    account-provider:
+        build:
+            account-provider
+        deploy:
+            resources:
+                limits:
+                    cpus: '0.5'
+                    memory: 300M
+                reservations:
+                    cpus: '0.3'
+                    memory: 250M
+        environment:
+            - ROOT_PASSWORD=${ROOT_PASSWORD}
+            - MONGO_PASSWORD=${MONGO_PASSWORD}
+    gateway:
+        build:
+            gateway
+        deploy:
+            resources:
+                limits:
+                    cpus: '0.5'
+                    memory: 300M
+                reservations:
+                    cpus: '0.3'
+                    memory: 250M
+        environment:
+            - ROOT_PASSWORD=${ROOT_PASSWORD}
+        ports:
+            - 8080:8080

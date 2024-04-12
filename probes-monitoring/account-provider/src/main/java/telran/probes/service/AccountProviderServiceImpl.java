@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import telran.accounting.dto.AccountDto;
-import telran.accounting.model.Account;
+import telran.probes.dto.AccountDto;
+import telran.probes.model.Account;
 import telran.exceptions.NotFoundException;
 import telran.probes.repo.AccountProviderRepo;
 @Service

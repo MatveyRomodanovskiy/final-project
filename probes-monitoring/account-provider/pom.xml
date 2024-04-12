@@ -5,16 +5,11 @@
     <artifactId>probes-monitoring</artifactId>
     <version>0.0.1</version>
   </parent>
-  <artifactId>AccountProvider</artifactId>
+  <artifactId>acc-provider</artifactId>
   <dependencies>
 	<dependency>
-		<groupId>telran.accounting</groupId>
-		<artifactId>accounting-management</artifactId>
-		<version>0.0.1</version>
-	</dependency>
-	<dependency>
-		<groupId>telran.exceptions</groupId>
-	  	<artifactId>web-exception</artifactId>
+		<groupId>telran.exceptions	</groupId>			
+		<artifactId>web-exception</artifactId>
 	  	<version>0.0.1</version>
 	</dependency>
   </dependencies>

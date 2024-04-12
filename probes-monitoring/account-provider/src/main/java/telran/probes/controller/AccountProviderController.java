@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import telran.accounting.dto.AccountDto;
+import telran.probes.dto.AccountDto;
 import telran.exceptions.NotFoundException;
 import telran.probes.service.AccountProviderService;
 
