@@ -11,6 +11,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.client.RestTemplate;
 
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Configuration
 public class SecurityConfiguration {
 	
@@ -54,9 +57,9 @@ public class SecurityConfiguration {
 				.requestMatchers(adminEmailsUrl + "/**").hasRole(adminNotifierRole)				
 				.requestMatchers(rangeSensorUrl + "/**").hasRole(userRangeRole)
 				.requestMatchers(emailsSensorUrl + "/**").hasRole(userNotifierRole)
-				.requestMatchers(accountsUrl + "/**").hasRole(userAccountsRole));
-		System.out.println(adminNotifierRole);
-		httpSecurity.sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
+				.requestMatchers(accountsUrl + "/**").hasRole(userAccountsRole)); 
+		httpSecurity.sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.NEVER));
+		log.debug("AdminEmails: {} , adminRangeUrl {},  rangeSensorUrl {}, accountsUrl {}",adminEmailsUrl, adminRangeUrl, rangeSensorUrl, accountsUrl);
 		httpSecurity.httpBasic(Customizer.withDefaults());
 		return httpSecurity.build();
 	}

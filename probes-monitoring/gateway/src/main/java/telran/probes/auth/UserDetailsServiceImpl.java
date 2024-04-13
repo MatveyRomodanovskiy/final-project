@@ -53,8 +53,8 @@ final RestTemplate restTemplate;
 			user = new User(email, account.password(), AuthorityUtils.createAuthorityList(roleStrings));
 			log.warn("user: {}", user);
 		}else {
-			user = new User(rootUserName, rootPassword, AuthorityUtils.createAuthorityList("ROLE_USER", "ROLE_ADMIN", "ROLE_ADMIN_NOTIFIER"));
-			log.warn("establish root user");
+			user = new User(rootUserName, rootPassword, AuthorityUtils.createAuthorityList("ROLE_USER", "ROLE_ADMIN", "ROLE_ADMIN_NOTIFIER", "ROLE_USER_ACCOUNT", "ROLE_ACCOUNT"));
+			log.warn("establish root user {}", user);
 		}
 		return user;
 				}

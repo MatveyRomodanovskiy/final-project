@@ -3,12 +3,12 @@ package telran.probes;
 import static org.mockito.Mockito.when;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static telran.probes.UrlConstants.*;
-import static telran.probes.messages.ErrorMessages.*;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import telran.exceptions.SensorNotFoundException;
+import telran.probes.TestDb;
 //import telran.exceptions.SensorNotFoundException;
 import telran.probes.service.SensorEmailsProviderService;
 
